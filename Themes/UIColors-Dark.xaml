@@ -1,0 +1,39 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- Main Color pallete -->
+    <SolidColorBrush x:Key="heading">#FFFFFF</SolidColorBrush>
+    <SolidColorBrush x:Key="bold">#FFFFFF</SolidColorBrush>
+    <SolidColorBrush x:Key="reverseColorText">#000000</SolidColorBrush>
+
+    <!-- Normal Controls -->
+    <SolidColorBrush x:Key="closeButtonBackground">Transparent</SolidColorBrush>
+    <SolidColorBrush x:Key="minimizeButtonBackground">Transparent</SolidColorBrush>
+    <SolidColorBrush x:Key="maximizeButtonBackground">Transparent</SolidColorBrush>
+    <SolidColorBrush x:Key="closeButton">White</SolidColorBrush>
+    <SolidColorBrush x:Key="minimizeButton">White</SolidColorBrush>
+    <SolidColorBrush x:Key="maximizeButton">White</SolidColorBrush>
+    <SolidColorBrush x:Key="controlButtonHover">#363737</SolidColorBrush>
+    <SolidColorBrush x:Key="closeButtonHover">#E81123</SolidColorBrush>
+
+    <!-- Potřebuje revizy-->
+    <SolidColorBrush x:Key="primaryBackgroundColor2">#1D1D1B</SolidColorBrush>
+    <SolidColorBrush x:Key="primaryBackgroundColor3">#D6806E</SolidColorBrush>
+    <SolidColorBrush x:Key="primaryBackgroundColor4">#F7AF00</SolidColorBrush>
+    <SolidColorBrush x:Key="primaryBackgroundColor5">#1D1D1B</SolidColorBrush>
+
+    <!-- REVIDOVANÉ -->
+    <SolidColorBrush x:Key="backgroundMainColor">#222222</SolidColorBrush>
+    <SolidColorBrush x:Key="backgroundBlockColor">#1D1D1B</SolidColorBrush>
+    <SolidColorBrush x:Key="backgroundBlockElementColor">#F7AF00</SolidColorBrush>
+    
+    <SolidColorBrush x:Key="scrollBarColor">#F7AF00</SolidColorBrush>
+    <SolidColorBrush x:Key="blandColor">#363737</SolidColorBrush>
+    <SolidColorBrush x:Key="paragraph">#FFFFFF</SolidColorBrush>
+    <SolidColorBrush x:Key="largeText">#FFFFFF</SolidColorBrush>
+    <SolidColorBrush x:Key="smallText">#FFFFFF</SolidColorBrush>
+    <SolidColorBrush x:Key="separatorColor">#222222</SolidColorBrush>
+
+
+
+    <ImageSource x:Key="imageUser">pack://application:,,,/Images/user.png</ImageSource>
+</ResourceDictionary>

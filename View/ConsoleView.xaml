@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="Capsa_Connector.View.ConsoleView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Capsa_Connector.View"
+             xmlns:components="clr-namespace:Capsa_Connector.View.ViewComponents"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="560">
+    <ScrollViewer Height="{Binding Path=ActualHeight, 
+                RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UIElement}, Mode=OneWay}">
+            <StackPanel Margin="30,0,30,10">
+                <TextBlock Style="{StaticResource textHeading}" Text="Console"/>
+                <TextBlock TextWrapping="Wrap" Padding="10" Background="Black" Foreground="White" FontSize="10" Margin="30" Text="{Binding ConsoleText}" ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto"></TextBlock>
+                <StackPanel Grid.Row="1">
+                    <Button BorderBrush="White" BorderThickness="2" Background="White" Foreground="Black" Command="{Binding ClearConsole}">Clear</Button>
+                </StackPanel>
+            </StackPanel>
+            
+        </ScrollViewer>
+</UserControl>

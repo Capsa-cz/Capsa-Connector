@@ -1,0 +1,24 @@
+﻿<Window x:Class="Capsa_Connector.View.UploadErrorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:Capsa_Connector.View"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Došlo k chybě" Height="180" Width="600">
+    <Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel>
+                <TextBlock Style="{DynamicResource textHeading}" Text="Došlo k chybě při nahráván souboru"/>
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Style="{DynamicResource textDescription}">Zkontrolujte si vaše připojení k internetu.</TextBlock>
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Style="{DynamicResource textDescription}">Pokud chcete zachovat rozpracovaný dokument a nepřijít o data, uložte soubor.</TextBlock>
+            </StackPanel>
+                        
+            <StackPanel Margin="0,10,0,0" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                <Button Click="Save_Click" Style="{DynamicResource ButtonRed}" Margin="0,0,5,0">Uložit soubor</Button>
+                <Button Click="Repeat_Click"  Style="{DynamicResource ButtonGreen}" Margin="0,0,5,0">Zkusit znovu</Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

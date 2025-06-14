@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="Capsa_Connector.View.ViewComponents.ActiveList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Capsa_Connector.View.ViewComponents"
+             xmlns:components="clr-namespace:Capsa_Connector.View.ViewComponents"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="400"
+             x:Name="myUserControl">
+    
+    <Grid HorizontalAlignment="Stretch">
+        <Border CornerRadius="10" MinHeight="50" Background="{DynamicResource backgroundBlockColor}">
+            <ItemsControl HorizontalAlignment="Stretch" ItemsSource="{Binding ElementName=myUserControl, Path=Elements}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel IsItemsHost="True" Margin="5,5,5,5"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border HorizontalAlignment="Stretch" Margin="5" Height="30" >
+                            <StackPanel Orientation="Horizontal" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <Button Command="{Binding ElementCommand}" Style="{StaticResource CloseBtn}">×</Button>
+                                <Border Background="{StaticResource backgroundBlockElementColor}" CornerRadius="0,7,7,0">
+                                    <TextBlock  FontSize="15" Margin="5,5,5,5"  VerticalAlignment="Center" Foreground="{DynamicResource bold}" Text="{Binding ElementName}"/>
+                                </Border>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.Style>
+                    <Style TargetType="ItemsControl">
+                        <Style.Triggers>
+                            <Trigger Property="HasItems" Value="False">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate>
+                                            <TextBlock Style="{StaticResource textParagraph}" Margin="20,10,0,0" Text="Zatím žádná aktivní vlákna"/>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ItemsControl.Style>
+            </ItemsControl>
+        </Border>
+    </Grid>
+</UserControl>

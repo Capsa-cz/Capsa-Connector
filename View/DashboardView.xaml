@@ -1,0 +1,182 @@
+﻿<UserControl x:Class="Capsa_Connector.View.DashboardView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:viewModel="clr-namespace:Capsa_Connector.ViewModel"
+             xmlns:components="clr-namespace:Capsa_Connector.View.ViewComponents"
+             xmlns:local="clr-namespace:Capsa_Connector.Controller.Tools"
+             mc:Ignorable="d"
+             d:DesignHeight="500" d:DesignWidth="560"
+             x:Name="DashboardViewControl">
+    
+    <UserControl.Resources>
+        <local:BoolToStyleConverter x:Key="BoolToStyleConverter"/>
+        <local:BoolToStyleMultiConverter x:Key="BoolToStyleMultiConverter"/>
+        <!-- Define the DrawingImage resources -->
+        <DrawingImage x:Key="plusIcon">
+            <DrawingImage.Drawing>
+                <DrawingGroup ClipGeometry="M0,0 V122.88 H118.04 V0 H0 Z">
+                    <DrawingGroup.Transform>
+                        <TranslateTransform X="0" Y="0.040000736713409424" />
+                    </DrawingGroup.Transform>
+                    <GeometryDrawing Brush="{DynamicResource paragraph}" Geometry="F1 M118.04,122.88z M0,0z M59.02,0A8,8,0,0,1,67.02,8V51.02H110.04A8,8,0,0,1,110.04,67.02H67.02V110.04A8,8,0,0,1,51.02,110.04V67.02H8A8,8,0,0,1,8,51.02H51.02V8A8,8,0,0,1,59.02,0z" />
+                </DrawingGroup>
+            </DrawingImage.Drawing>
+        </DrawingImage>
+
+        <DrawingImage x:Key="minusIcon">
+            <DrawingImage.Drawing>
+                <DrawingGroup ClipGeometry="M0,0 V122.88 H118.04 V0 H0 Z">
+                    <DrawingGroup.Transform>
+                        <TranslateTransform X="0" Y="0.040000736713409424" />
+                    </DrawingGroup.Transform>
+                    <GeometryDrawing Brush="{DynamicResource paragraph}" Geometry="F1 M118.04,122.88z M0,0z M8,51.02A8,8,0,0,1,8,67.02H110.04A8,8,0,0,1,110.04,51.02H8z" />
+                </DrawingGroup>
+            </DrawingImage.Drawing>
+        </DrawingImage>
+    </UserControl.Resources>
+    <ScrollViewer VirtualizingPanel.ScrollUnit="Pixel" Height="{Binding Path=ActualHeight, 
+                RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UIElement}, Mode=OneWay}">
+        <StackPanel>
+            <StackPanel Margin="30,0,30,0">
+                <Grid Margin="0,20,0,20" Visibility="{Binding TopSectionVisibility}">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Style="{StaticResource textLarge}" Text="{Binding FullName}"/>
+                        <TextBlock Margin="0,-7,0,0" Style="{StaticResource textSmall}" Text="{Binding Email}"/>
+                    </StackPanel>
+                    <Button FontSize="17" Command="{Binding RemoveAppToken}" Style="{DynamicResource ButtonCapsa}" HorizontalAlignment="Right">
+                        <TextBlock Margin="7">Odhlásit</TextBlock>
+                    </Button>
+                </Grid>
+                <Border Background="{DynamicResource backgroundBlockColor}" CornerRadius="20">
+                    <Grid>
+                        <StackPanel  Margin="20,15,20,15" x:Name="FunctionChecklist" HorizontalAlignment="Left">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Margin="0,0,15,0" Width="20" Style="{Binding BrowserPairingStatus}"/>
+                                <TextBlock Style="{DynamicResource textParagraph}">Spárování s prohlížečem</TextBlock>
+                            </StackPanel>
+                            
+                            <Image  Width="5" Style="{DynamicResource betweenDots}"/>
+
+                            <StackPanel Orientation="Horizontal">
+                                <Image Margin="0,0,15,0" Width="20" Style="{Binding SocketActiveStatus}"/>
+                                <TextBlock Style="{DynamicResource textParagraph}">Připojení k serveru aktivní</TextBlock>
+                            </StackPanel>
+                            
+                            <Image  Width="5" Style="{DynamicResource betweenDots}"/>
+                            
+                            <StackPanel Orientation="Horizontal">
+                                <Image Margin="0,0,15,0" Width="20" Style="{Binding LastBrowserActivityStatus}"/>
+                                <TextBlock Style="{DynamicResource textParagraph}">Poslední aktivita v prohlížeči</TextBlock>
+                            </StackPanel>
+                        </StackPanel>   
+                        <Canvas>
+                            <Button Command="{Binding PairAgain}"  Background="{DynamicResource backgroundMainColor}" Style="{Binding PairAgainButtonStyle}" HorizontalAlignment="Right" Canvas.Top="10" Canvas.Right="10" Height="Auto">
+                                <TextBlock Margin="7" Foreground="{DynamicResource paragraph}" TextDecorations="Underline" Text="Znovu spárovat" />
+                            </Button>
+                            <Button Command="{Binding UpdateDashboardIndicator}" Background="{DynamicResource backgroundMainColor}" Style="{DynamicResource ButtonCircle}" Canvas.Right="10" Canvas.Bottom="10">
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <Image Margin="7" Width="10" Style="{DynamicResource refreshIcon}"/>
+                                    <TextBlock Margin="0,0,10,0"   Foreground="{DynamicResource paragraph}" VerticalAlignment="Center">Aktualizovat</TextBlock>
+                                </StackPanel>
+                            </Button>
+                        </Canvas>
+                    </Grid>
+                </Border>
+                
+                
+                <StackPanel Margin="0,20,0,20">
+                    <TextBlock Style="{StaticResource textSecoundaryHeading}">Dostupné disky</TextBlock>
+                    <TextBlock Text="{Binding Path=WorkspacesCount, StringFormat='(Počet dostupných disků: {0})'}" Margin="0,10,0,10" Style="{StaticResource textDescription}" />
+                    <ItemsControl ItemsSource="{Binding Workspaces}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border Margin="5"  Background="{DynamicResource backgroundBlockColor}" CornerRadius="20">
+                                    <Button Width="100" Height="100" Command="{Binding ActionCommand}">
+                                        <Button.Style>
+                                            <MultiBinding Converter="{StaticResource BoolToStyleMultiConverter}">
+                                                <Binding Path="IsConnected"/>
+                                                <Binding Source="{StaticResource ActiveBorderButtonStyle}"/>
+                                                <Binding Source="{StaticResource BorderButtonStyle}"/>
+                                            </MultiBinding>
+                                        </Button.Style>
+                                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <Image Margin="0,4,0,2" Source="pack://application:,,,/Images/windrive.png"  Height="25" HorizontalAlignment="Center"/>
+                                            <TextBlock Margin="0,0,0,4" Text="{Binding Title}" HorizontalAlignment="Center" TextTrimming="CharacterEllipsis" TextWrapping="Wrap" Style="{DynamicResource textParagraph}"/>
+                                            <Button Margin="0,4,0,0" Command="{Binding ActionCommand}" Background="{DynamicResource backgroundMainColor}" Style="{DynamicResource ButtonCircle}" Padding="5,4,5,4">
+                                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                    <Image Width="10" Height="10" Margin="7,3,7,3">
+                                                        <Image.Style>
+                                                            <Style TargetType="Image">
+                                                                <Style.Setters>
+                                                                    <!-- Default icon (disconnected state) -->
+                                                                    <Setter Property="Source" Value="{StaticResource plusIcon}" />
+                                                                </Style.Setters>
+                                                                <Style.Triggers>
+                                                                    <!-- Change to "connected" icon if IsConnected is true -->
+                                                                    <DataTrigger Binding="{Binding IsConnected}" Value="True">
+                                                                        <Setter Property="Source" Value="{StaticResource minusIcon}" />
+                                                                    </DataTrigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </Image.Style>
+                                                    </Image>
+                                                    <TextBlock Margin="0,0,10,0" Foreground="{DynamicResource paragraph}" VerticalAlignment="Center">
+                                                        <TextBlock.Style>
+                                                            <Style TargetType="TextBlock">
+                                                                <Setter Property="Text" Value="Připojit"/>
+                                                                <Style.Triggers>
+                                                                    <DataTrigger Binding="{Binding IsConnected}" Value="True">
+                                                                        <Setter Property="Text" Value="Odpojit"/>
+                                                                    </DataTrigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </TextBlock.Style>
+                                                    </TextBlock>
+                                                </StackPanel>
+                                            </Button>
+                                        </StackPanel>
+                                    </Button>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+
+                <StackPanel Margin="0,30,0,10">
+                    <TextBlock Style="{StaticResource textSecoundaryHeading}">Úprava souborů</TextBlock>
+                    <TextBlock Margin="0,10,0,10" Style="{StaticResource textDescription}">Aktivní soubory</TextBlock>
+                    <Border ClipToBounds="True" Background="{DynamicResource backgroundBlockColor}" CornerRadius="20">
+                        <components:FileHistoryList ClipToBounds="True"  Margin="0,2,0,2" VerticalAlignment="Stretch"  DashboardElements="{Binding Path=ActiveFiles, Mode=OneWay}"/>
+                    </Border>
+                    <TextBlock Text="{Binding Path=PreviousFiles.Count, StringFormat='Nedávno upravené ({0} souborů)'}" Margin="0,10,0,10" Style="{StaticResource textDescription}" />
+                    <Border ClipToBounds="True" Background="{DynamicResource backgroundBlockColor}" CornerRadius="20">
+                        <components:FileHistoryList  Margin="0,2,0,2" VerticalAlignment="Stretch"  DashboardElements="{Binding Path=PreviousFiles, Mode=OneWay}"/>
+                    </Border>
+                </StackPanel>
+                
+            </StackPanel>
+
+
+            
+        </StackPanel>
+    </ScrollViewer>
+
+    <!--<Grid Grid.Row="0">
+            <TextBlock Grid.Column="0" Foreground="{DynamicResource heading}" FontSize="30">Přehled</TextBlock>
+            <StackPanel Margin="0" Grid.Column="1" Orientation="Vertical">
+                <TextBlock Foreground="White" HorizontalAlignment="Center">Server Status</TextBlock>
+                <Button x:Name="ServerStatusButton" Style="{StaticResource ButtonStatus}" Content="{Binding Status.message, Mode=OneWay}"/>
+            </StackPanel>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="400"/>
+            </Grid.ColumnDefinitions>
+        </Grid>-->
+</UserControl>

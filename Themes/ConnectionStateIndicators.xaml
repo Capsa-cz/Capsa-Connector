@@ -1,0 +1,218 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="Checkmark" TargetType="Image">
+        <Setter Property="Source">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <DrawingGroup ClipGeometry="M0,0 V499 H499 V0 H0 Z">
+                            <DrawingGroup Opacity="1">
+                                <GeometryDrawing Brush="#FF88A80D">
+                                    <GeometryDrawing.Geometry>
+                                        <EllipseGeometry RadiusX="249.5" RadiusY="249.5" Center="249.5,249.5" />
+                                    </GeometryDrawing.Geometry>
+                                </GeometryDrawing>
+                                <GeometryDrawing Brush="#FFFFFFFF" Geometry="F1 M499,499z M0,0z M214.5,346.5C211.94,346.5,209.38,345.52,207.43,343.57L113.93,250.07C110.03,246.16 110.03,239.83 113.93,235.93 117.84,232.02 124.17,232.02 128.07,235.93L214.5,322.36 407.43,129.43C411.34,125.52 417.67,125.52 421.57,129.43 425.48,133.34 425.48,139.67 421.57,143.57L221.57,343.57C219.62,345.52,217.06,346.5,214.5,346.5z">
+                                    <GeometryDrawing.Pen>
+                                        <Pen Brush="#FFFFFFFF" Thickness="1" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+                                    </GeometryDrawing.Pen>
+                                </GeometryDrawing>
+                                <GeometryDrawing Geometry="F1 M499,499z M0,0z M121,243L121,243 214.5,336.5 214.58,336.42 414.5,136.5">
+                                    <GeometryDrawing.Pen>
+                                        <Pen Brush="#FFFFFFFF" Thickness="1" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+                                    </GeometryDrawing.Pen>
+                                </GeometryDrawing>
+                            </DrawingGroup>
+                        </DrawingGroup>
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="Questionmark" TargetType="Image">
+        <Setter Property="Source">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <DrawingGroup ClipGeometry="M0,0 V499 H499 V0 H0 Z">
+                            <DrawingGroup Opacity="1">
+                                <GeometryDrawing Brush="#F7AF00">
+                                    <GeometryDrawing.Geometry>
+                                        <EllipseGeometry RadiusX="249.5" RadiusY="249.5" Center="249.5,249.5" />
+                                    </GeometryDrawing.Geometry>
+                                </GeometryDrawing>
+                                <GeometryDrawing Brush="#FFFFFF" Geometry="F1 M499,499z M0,0z M237.76,308.69C232.92,308.69 228.72,305.33 227.69,300.6 227.29,298.75 226.91,296.75 226.55,294.6 225.57,288.83 225.09,283.09 225.09,277.38 225.09,268.48 226.86,260.44 230.41,253.27 233.96,246.1 238.38,239.39 243.67,233.13 248.96,226.87 254.73,220.85 261,215.07 267.26,209.3 273.03,203.45 278.33,197.53 283.62,191.62 288.04,185.42 291.59,178.95 295.14,172.48 296.91,165.35 296.91,157.55 296.91,150.87 295.62,144.96 293.05,139.81 290.47,134.66 286.96,130.35 282.51,126.87 278.05,123.39 272.91,120.78 267.06,119.04 261.21,117.3 255.02,116.43 248.48,116.43 231.89,116.43 216.85,121.04 203.38,130.25 196.57,134.91 187.32,129.96 187.32,121.7L187.32,113.29C187.32,109.63 189.24,106.21 192.42,104.39 212.13,93.07 232.49,87.41 253.5,87.41 264.07,87.41 274.03,88.8 283.35,91.59 292.67,94.38 300.85,98.51 307.88,104.01 314.91,109.51 320.44,116.36 324.48,124.57 328.51,132.78 330.54,142.31 330.54,153.17 330.54,164.03 328.73,172.66 325.11,180.73 321.49,188.8 316.93,196.21 311.43,202.96 305.93,209.71 299.98,216.01 293.58,221.85 287.18,227.7 281.23,233.51 275.73,239.28 270.23,245.06 265.67,251.08 262.06,257.34 258.44,263.6 256.63,270.49 256.63,278.01 256.63,284.41 257.39,290.22 258.93,295.44L258.93,295.44C260.87,302.06,255.91,308.7,249,308.7L237.78,308.7z M248.67,395.53C242.54,395.53 237.12,393.3 232.39,388.85 227.8,384.4 225.5,378.97 225.5,372.57 225.5,366.17 227.8,360.6 232.39,356.29 236.98,351.7 242.41,349.4 248.67,349.4 254.93,349.4 260.36,351.7 264.95,356.29 269.54,360.6 271.84,366.03 271.84,372.57 271.84,379.11 269.54,384.4 264.95,388.85 260.22,393.3 254.79,395.53 248.67,395.53z" />
+                            </DrawingGroup>
+                        </DrawingGroup>
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="Minusmark" TargetType="Image">
+        <Setter Property="Source">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <DrawingGroup ClipGeometry="M0,0 V499 H499 V0 H0 Z">
+                            <DrawingGroup Opacity="1">
+                                <GeometryDrawing Brush="#FF2400">
+                                    <GeometryDrawing.Geometry>
+                                        <EllipseGeometry RadiusX="249.5" RadiusY="249.5" Center="249.5,249.5" />
+                                    </GeometryDrawing.Geometry>
+                                </GeometryDrawing>
+                                <GeometryDrawing Brush="#FFFFFFFF" Geometry="F1 M499,499z M0,0z M393.3,259.69L105.3,259.69C99.78,259.69 95.3,255.21 95.3,249.69 95.3,244.17 99.78,239.69 105.3,239.69L393.3,239.69C398.82,239.69 403.3,244.17 403.3,249.69 403.3,255.21 398.82,259.69 393.3,259.69z">
+                                    <GeometryDrawing.Pen>
+                                        <Pen Brush="#FFFFFFFF" Thickness="1" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+                                    </GeometryDrawing.Pen>
+                                </GeometryDrawing>
+                            </DrawingGroup>
+                        </DrawingGroup>
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="betweenDots" TargetType="Image">
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="Margin" Value="8.5,2,0,2"/>
+        <Setter Property="Height" Value="15"/>
+        <Setter Property="Source">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <DrawingGroup ClipGeometry="M0,0 V499 H499 V0 H0 Z">
+                            <DrawingGroup ClipGeometry="M0,0 V500 H100 V0 H0 Z">
+                                <DrawingGroup Opacity="1">
+                                    <GeometryDrawing Brush="#FFCCCCCC">
+                                        <GeometryDrawing.Geometry>
+                                            <EllipseGeometry RadiusX="50" RadiusY="50" Center="50,50" />
+                                        </GeometryDrawing.Geometry>
+                                    </GeometryDrawing>
+                                    <GeometryDrawing Brush="#FFCCCCCC">
+                                        <GeometryDrawing.Geometry>
+                                            <EllipseGeometry RadiusX="50" RadiusY="50" Center="50,450" />
+                                        </GeometryDrawing.Geometry>
+                                    </GeometryDrawing>
+                                    <GeometryDrawing Brush="#FFCCCCCC">
+                                        <GeometryDrawing.Geometry>
+                                            <EllipseGeometry RadiusX="50" RadiusY="50" Center="50,250" />
+                                        </GeometryDrawing.Geometry>
+                                    </GeometryDrawing>
+                                </DrawingGroup>
+                            </DrawingGroup>
+                        </DrawingGroup>
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+                
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="refreshIcon" TargetType="Image">
+        <Setter Property="Source">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <DrawingGroup ClipGeometry="M0,0 V122.88 H118.04 V0 H0 Z">
+                            <DrawingGroup.Transform>
+                                <TranslateTransform X="0" Y="0.040000736713409424" />
+                            </DrawingGroup.Transform>
+                            <GeometryDrawing Brush="{DynamicResource paragraph}" Geometry="F1 M118.04,122.88z M0,0z M16.08,59.26A8,8,0,0,1,0,59.26A59,59,0,0,1,97.13,14.26L97.13,8A8,8,0,1,1,113.21,8L113.21,33.35A8,8,0,0,1,105.21,41.35L80.82,43.62A8,8,0,1,1,79.38,27.67L87.38,26.94A43,43,0,0,0,16.08,59.26z M38.85,78.86A8,8,0,0,1,40.29,94.86L30.21,95.77A42.95,42.95,0,0,0,102,63.86A8,8,0,0,1,118.08,63.86A59,59,0,0,1,22.3,110L22.3,114.18A8,8,0,0,1,6.22,114.18L6.22,89.14 6.22,89.14A8,8,0,0,1,13.51,81.14L38.82,78.84z" />
+                        </DrawingGroup>
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Source">
+                    <Setter.Value>
+                        <DrawingImage>
+                            <DrawingImage.Drawing>
+                                <DrawingGroup ClipGeometry="M0,0 V122.88 H118.04 V0 H0 Z">
+                                    <DrawingGroup.Transform>
+                                        <TranslateTransform X="0" Y="0.040000736713409424" />
+                                    </DrawingGroup.Transform>
+                                    <GeometryDrawing Brush="{DynamicResource paragraph}" Geometry="F1 M118.04,122.88z M0,0z M16.08,59.26A8,8,0,0,1,0,59.26A59,59,0,0,1,97.13,14.26L97.13,8A8,8,0,1,1,113.21,8L113.21,33.35A8,8,0,0,1,105.21,41.35L80.82,43.62A8,8,0,1,1,79.38,27.67L87.38,26.94A43,43,0,0,0,16.08,59.26z M38.85,78.86A8,8,0,0,1,40.29,94.86L30.21,95.77A42.95,42.95,0,0,0,102,63.86A8,8,0,0,1,118.08,63.86A59,59,0,0,1,22.3,110L22.3,114.18A8,8,0,0,1,6.22,114.18L6.22,89.14 6.22,89.14A8,8,0,0,1,13.51,81.14L38.82,78.84z" />
+                                </DrawingGroup>
+                            </DrawingImage.Drawing>
+                        </DrawingImage>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="plusIcon" TargetType="Image">
+        <Setter Property="Source">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <DrawingGroup ClipGeometry="M0,0 V122.88 H118.04 V0 H0 Z">
+                            <DrawingGroup.Transform>
+                                <TranslateTransform X="0" Y="0.040000736713409424" />
+                            </DrawingGroup.Transform>
+                            <GeometryDrawing Brush="{DynamicResource paragraph}" Geometry="F1 M118.04,122.88z M0,0z M59.02,0A8,8,0,0,1,67.02,8V51.02H110.04A8,8,0,0,1,110.04,67.02H67.02V110.04A8,8,0,0,1,51.02,110.04V67.02H8A8,8,0,0,1,8,51.02H51.02V8A8,8,0,0,1,59.02,0z" />
+                        </DrawingGroup>
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Source">
+                    <Setter.Value>
+                        <DrawingImage>
+                            <DrawingImage.Drawing>
+                                <DrawingGroup ClipGeometry="M0,0 V122.88 H118.04 V0 H0 Z">
+                                    <DrawingGroup.Transform>
+                                        <TranslateTransform X="0" Y="0.040000736713409424" />
+                                    </DrawingGroup.Transform>
+                                    <GeometryDrawing Brush="{DynamicResource paragraph}" Geometry="F1 M118.04,122.88z M0,0z M59.02,0A8,8,0,0,1,67.02,8V51.02H110.04A8,8,0,0,1,110.04,67.02H67.02V110.04A8,8,0,0,1,51.02,110.04V67.02H8A8,8,0,0,1,8,51.02H51.02V8A8,8,0,0,1,59.02,0z" />
+                                </DrawingGroup>
+                            </DrawingImage.Drawing>
+                        </DrawingImage>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="minusIcon" TargetType="Image">
+        <Setter Property="Source">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <DrawingGroup ClipGeometry="M0,0 V122.88 H118.04 V0 H0 Z">
+                            <DrawingGroup.Transform>
+                                <TranslateTransform X="0" Y="0.040000736713409424" />
+                            </DrawingGroup.Transform>
+                            <GeometryDrawing Brush="{DynamicResource paragraph}" 
+                                             Geometry="F1 M118.04,122.88z M0,0z M8,51.02A8,8,0,0,1,8,67.02H110.04A8,8,0,0,1,110.04,51.02H8z" />
+                        </DrawingGroup>
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Source">
+                    <Setter.Value>
+                        <DrawingImage>
+                            <DrawingImage.Drawing>
+                                <DrawingGroup ClipGeometry="M0,0 V122.88 H118.04 V0 H0 Z">
+                                    <DrawingGroup.Transform>
+                                        <TranslateTransform X="0" Y="0.040000736713409424" />
+                                    </DrawingGroup.Transform>
+                                    <GeometryDrawing Brush="{DynamicResource paragraph}" 
+                                                     Geometry="F1 M118.04,122.88z M0,0z M8,51.02A8,8,0,0,1,8,67.02H110.04A8,8,0,0,1,110.04,51.02H8z" />
+                                </DrawingGroup>
+                            </DrawingImage.Drawing>
+                        </DrawingImage>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

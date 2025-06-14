@@ -1,0 +1,16 @@
+﻿<Window x:Class="Capsa_Connector.View.StartEditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:Capsa_Connector.View"
+        mc:Ignorable="d"
+        Background="{DynamicResource backgroundMainColor}"
+        Title="Otevírání" Height="180" Width="500">
+    <Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock HorizontalAlignment="Center" Style="{DynamicResource textSecoundaryHeading}">Otevírání v aplikaci</TextBlock>
+            <TextBlock HorizontalAlignment="Center" Style="{DynamicResource textDescription}" x:Name="descriptions">Soubor se otevírá!</TextBlock>
+        </StackPanel>
+    </Grid>
+</Window>

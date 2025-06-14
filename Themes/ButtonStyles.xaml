@@ -1,0 +1,545 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- Default style for buttons -->
+    <Style TargetType="{x:Type Button}">
+        <Style.Setters>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Width" Value="Auto"/>
+            <Setter Property="Padding" Value="8"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Border x:Name="ButtonBorder" CornerRadius="8">
+                                <Border.Background>
+                                    <LinearGradientBrush x:Name="ButtonBackground" StartPoint="0,0" EndPoint="1,1" >
+                                        <GradientStop Color="#3F4045" Offset="0.0"/>
+                                        <GradientStop Color="#28292D" Offset="1.0"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                            </Border>
+                            <TextBlock Text="{TemplateBinding Content}"
+                                       Width="Auto"
+                                       FontSize="15"
+                                       Foreground="White"
+                                       Padding="10"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <EventTrigger RoutedEvent="Button.MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="ButtonBackground"
+                                                        Storyboard.TargetProperty="(GradientBrush.GradientStops)[0].Color"
+                                                        To="#515254"
+                                                        Duration="0:0:0.3"/>
+                                        <ColorAnimation Storyboard.TargetName="ButtonBackground"
+                                                        Storyboard.TargetProperty="(GradientBrush.GradientStops)[1].Color"
+                                                        To="#38383B"
+                                                        Duration="0:0:0.3"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="Button.MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="ButtonBackground"
+                                                        Storyboard.TargetProperty="(GradientBrush.GradientStops)[0].Color"
+                                                        To="#3F4045"
+                                                        Duration="0:0:0.3"/>
+                                        <ColorAnimation Storyboard.TargetName="ButtonBackground"
+                                                        Storyboard.TargetProperty="(GradientBrush.GradientStops)[1].Color"
+                                                        To="#28292D"
+                                                        Duration="0:0:0.3"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style.Setters>
+    </Style>
+    
+    <!-- Green button styles -->
+    <Style x:Key="ButtonGreen" TargetType="{x:Type Button}">
+        <Style.Setters>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Width" Value="Auto"/>
+            <Setter Property="Padding" Value="8"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Border x:Name="ButtonBorder" CornerRadius="8">
+                                <Border.Background>
+                                    <LinearGradientBrush x:Name="ButtonBackground" StartPoint="0,0" EndPoint="1,1" >
+                                        <GradientStop Color="#539C51" Offset="0.0"/>
+                                        <GradientStop Color="#428D41" Offset="1.0"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                            </Border>
+                            <TextBlock x:Name="ButtonContent"
+                                              Text="{TemplateBinding Content}"
+                                              Width="{TemplateBinding Width}"
+                                              FontSize="{TemplateBinding FontSize}"
+                                              Foreground="White"
+                                              Padding="{TemplateBinding Padding}"
+                                              VerticalAlignment="Center"
+                                              HorizontalAlignment="Center"
+                                              Height="{TemplateBinding Height}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <EventTrigger RoutedEvent="Button.MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="ButtonBackground"
+                                                        Storyboard.TargetProperty="(GradientBrush.GradientStops)[0].Color"
+                                                        To="#7DDC76"
+                                                        Duration="0:0:0.3"/>
+                                        <ColorAnimation Storyboard.TargetName="ButtonBackground"
+                                                        Storyboard.TargetProperty="(GradientBrush.GradientStops)[1].Color"
+                                                        To="#66CC64"
+                                                        Duration="0:0:0.3"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="Button.MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="ButtonBackground"
+                                                        Storyboard.TargetProperty="(GradientBrush.GradientStops)[0].Color"
+                                                        To="#539C51"
+                                                        Duration="0:0:0.3"/>
+                                        <ColorAnimation Storyboard.TargetName="ButtonBackground"
+                                                        Storyboard.TargetProperty="(GradientBrush.GradientStops)[1].Color"
+                                                        To="#428D41"
+                                                        Duration="0:0:0.3"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style.Setters>
+    </Style>
+    
+    <!-- Button Red -->
+    <Style x:Key="ButtonRed" TargetType="{x:Type Button}">
+        <Style.Setters>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Width" Value="Auto"/>
+            <Setter Property="Padding" Value="8"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0">
+                            <Border x:Name="ButtonBorder" CornerRadius="8">
+                                <Border.Background>
+                                    <LinearGradientBrush x:Name="ButtonBackground" StartPoint="0,0" EndPoint="1,1" >
+                                        <GradientStop Color="#F16868" Offset="0.0"/>
+                                        <GradientStop Color="#E05555" Offset="1.0"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                            </Border>
+                            <TextBlock x:Name="ButtonContent"
+                                              Text="{TemplateBinding Content}"
+                                              Width="{TemplateBinding Width}"
+                                              FontSize="{TemplateBinding FontSize}"
+                                              Foreground="White"
+                                              Padding="{TemplateBinding Padding}"
+                                              VerticalAlignment="Center"
+                                              HorizontalAlignment="Center"
+                                              Height="{TemplateBinding Height}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <EventTrigger RoutedEvent="Button.MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="ButtonBackground"
+                                                        Storyboard.TargetProperty="(GradientBrush.GradientStops)[0].Color"
+                                                        To="#FF8283"
+                                                        Duration="0:0:0.3"/>
+                                        <ColorAnimation Storyboard.TargetName="ButtonBackground"
+                                                        Storyboard.TargetProperty="(GradientBrush.GradientStops)[1].Color"
+                                                        To="#FF6C6D"
+                                                        Duration="0:0:0.3"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="Button.MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="ButtonBackground"
+                                                        Storyboard.TargetProperty="(GradientBrush.GradientStops)[0].Color"
+                                                        To="#F16868"
+                                                        Duration="0:0:0.3"/>
+                                        <ColorAnimation Storyboard.TargetName="ButtonBackground"
+                                                        Storyboard.TargetProperty="(GradientBrush.GradientStops)[1].Color"
+                                                        To="#E05555"
+                                                        Duration="0:0:0.3"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style.Setters>
+    </Style>
+
+    <!-- Basic default button styles -->
+    <Style x:Key="ButtonDefault" TargetType="{x:Type Button}">
+        <Style.Setters>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Width" Value="Auto"/>
+            <Setter Property="Padding" Value="8"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Border x:Name="ButtonBorder" CornerRadius="8">
+                                <Border.Background>
+                                    <LinearGradientBrush x:Name="ButtonBackground" StartPoint="0,0" EndPoint="1,1" >
+                                        <GradientStop Color="#3F4045" Offset="0.0"/>
+                                        <GradientStop Color="#28292D" Offset="1.0"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                            </Border>
+                            <TextBlock Text="{TemplateBinding Content}"
+                                       Width="Auto"
+                                       FontSize="20"
+                                       Foreground="White"
+                                       Padding="10"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <EventTrigger RoutedEvent="Button.MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="ButtonBackground"
+                                                        Storyboard.TargetProperty="(GradientBrush.GradientStops)[0].Color"
+                                                        To="#515254"
+                                                        Duration="0:0:0.3"/>
+                                        <ColorAnimation Storyboard.TargetName="ButtonBackground"
+                                                        Storyboard.TargetProperty="(GradientBrush.GradientStops)[1].Color"
+                                                        To="#38383B"
+                                                        Duration="0:0:0.3"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="Button.MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="ButtonBackground"
+                                                        Storyboard.TargetProperty="(GradientBrush.GradientStops)[0].Color"
+                                                        To="#3F4045"
+                                                        Duration="0:0:0.3"/>
+                                        <ColorAnimation Storyboard.TargetName="ButtonBackground"
+                                                        Storyboard.TargetProperty="(GradientBrush.GradientStops)[1].Color"
+                                                        To="#28292D"
+                                                        Duration="0:0:0.3"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style.Setters>
+    </Style>
+
+    <!-- Close button in active list -->
+    <Style BasedOn="{StaticResource {x:Type Button}}" TargetType="Button" x:Key="CloseBtn">
+        <Setter Property="Width" Value="30"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Background" Value="{DynamicResource backgroundMainColor}"/> 
+        <Setter Property="Foreground" Value="{DynamicResource paragraph}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="5,0,0,5">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource closeButtonHover}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+    <!-- Status button -->
+    <Style x:Key="ButtonStatus" TargetType="{x:Type Button}">
+        <Style.Setters>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Width" Value="Auto"/>
+            <Setter Property="Padding" Value="8"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Border x:Name="ButtonBorder" CornerRadius="8">
+                                <Border.Background>
+                                    <LinearGradientBrush x:Name="ButtonBackground" StartPoint="0,0" EndPoint="1,1" >
+                                        <GradientStop Color="#3F4045" Offset="0.0"/>
+                                        <GradientStop Color="#28292D" Offset="1.0"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                            </Border>
+                            <TextBlock Text="{TemplateBinding Content}"
+                                       Width="Auto"
+                                       FontSize="20"
+                                       Foreground="White"
+                                       Padding="10"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <EventTrigger RoutedEvent="Button.MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="ButtonBackground"
+                                                        Storyboard.TargetProperty="(GradientBrush.GradientStops)[0].Color"
+                                                        To="#515254"
+                                                        Duration="0:0:0.3"/>
+                                        <ColorAnimation Storyboard.TargetName="ButtonBackground"
+                                                        Storyboard.TargetProperty="(GradientBrush.GradientStops)[1].Color"
+                                                        To="#38383B"
+                                                        Duration="0:0:0.3"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="Button.MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="ButtonBackground"
+                                                        Storyboard.TargetProperty="(GradientBrush.GradientStops)[0].Color"
+                                                        To="#3F4045"
+                                                        Duration="0:0:0.3"/>
+                                        <ColorAnimation Storyboard.TargetName="ButtonBackground"
+                                                        Storyboard.TargetProperty="(GradientBrush.GradientStops)[1].Color"
+                                                        To="#28292D"
+                                                        Duration="0:0:0.3"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style.Setters>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Status.statusColor}" Value="Green">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Border x:Name="ButtonBorder" CornerRadius="8">
+                                    <Border.Background>
+                                        <LinearGradientBrush x:Name="ButtonBackground" StartPoint="0,0" EndPoint="1,1" >
+                                            <GradientStop Color="#539C51" Offset="0.0"/>
+                                            <GradientStop Color="#428D41" Offset="1.0"/>
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                </Border>
+                                <TextBlock Text="{TemplateBinding Content}"
+                                           Width="Auto"
+                                           FontSize="20"
+                                           Foreground="White"
+                                           Padding="10"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <EventTrigger RoutedEvent="Button.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetName="ButtonBackground"
+                                                            Storyboard.TargetProperty="(GradientBrush.GradientStops)[0].Color"
+                                                            To="#7DDC76"
+                                                            Duration="0:0:0.3"/>
+                                            <ColorAnimation Storyboard.TargetName="ButtonBackground"
+                                                            Storyboard.TargetProperty="(GradientBrush.GradientStops)[1].Color"
+                                                            To="#66CC64"
+                                                            Duration="0:0:0.3"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="Button.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetName="ButtonBackground"
+                                                            Storyboard.TargetProperty="(GradientBrush.GradientStops)[0].Color"
+                                                            To="#539C51"
+                                                            Duration="0:0:0.3"/>
+                                            <ColorAnimation Storyboard.TargetName="ButtonBackground"
+                                                            Storyboard.TargetProperty="(GradientBrush.GradientStops)[1].Color"
+                                                            To="#428D41"
+                                                            Duration="0:0:0.3"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Status.statusColor}" Value="Red">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Border x:Name="ButtonBorder" CornerRadius="8">
+                                    <Border.Background>
+                                        <LinearGradientBrush x:Name="ButtonBackground" StartPoint="0,0" EndPoint="1,1" >
+                                            <GradientStop Color="#F16868" Offset="0.0"/>
+                                            <GradientStop Color="#E05555" Offset="1.0"/>
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                </Border>
+                                <TextBlock Text="{TemplateBinding Content}"
+                                           Width="Auto"
+                                           FontSize="20"
+                                           Foreground="White"
+                                           Padding="10"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <EventTrigger RoutedEvent="Button.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetName="ButtonBackground"
+                                                            Storyboard.TargetProperty="(GradientBrush.GradientStops)[0].Color"
+                                                            To="#FF8283"
+                                                            Duration="0:0:0.3"/>
+                                            <ColorAnimation Storyboard.TargetName="ButtonBackground"
+                                                            Storyboard.TargetProperty="(GradientBrush.GradientStops)[1].Color"
+                                                            To="#FF6C6D"
+                                                            Duration="0:0:0.3"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="Button.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetName="ButtonBackground"
+                                                            Storyboard.TargetProperty="(GradientBrush.GradientStops)[0].Color"
+                                                            To="#F16868"
+                                                            Duration="0:0:0.3"/>
+                                            <ColorAnimation Storyboard.TargetName="ButtonBackground"
+                                                            Storyboard.TargetProperty="(GradientBrush.GradientStops)[1].Color"
+                                                            To="#E05555"
+                                                            Duration="0:0:0.3"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    
+    <!-- Capsa color button -->
+    <Style x:Key="ButtonCapsa" TargetType="{x:Type Button}">
+        <Style.Setters>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Width" Value="Auto"/>
+            <Setter Property="Padding" Value="8"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Border x:Name="ButtonBorder" CornerRadius="12">
+                                <Border.Background>
+                                    <LinearGradientBrush x:Name="ButtonBackground" StartPoint="0,0" EndPoint="1,1" >
+                                        <!-- Default color #F7AF00 -->
+                                        <GradientStop Color="#F7AF00" Offset="0.0"/>
+                                        <!-- Hover color -->
+                                        <GradientStop Color="#F7AF00" Offset="1.0"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                            </Border>
+                            <ContentPresenter Content="{TemplateBinding Content}" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <EventTrigger RoutedEvent="Button.MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <!-- Gradient stop for hover color -->
+                                        <ColorAnimation Storyboard.TargetName="ButtonBackground"
+                                                    Storyboard.TargetProperty="(GradientBrush.GradientStops)[1].Color"
+                                                    To="#FF8283"
+                                                    Duration="0:0:0.3"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="Button.MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <!-- Reset to default color on mouse leave -->
+                                        <ColorAnimation Storyboard.TargetName="ButtonBackground"
+                                                    Storyboard.TargetProperty="(GradientBrush.GradientStops)[1].Color"
+                                                    To="#F7AF00"
+                                                    Duration="0:0:0.3"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style.Setters>
+    </Style>
+    <Style x:Key="ButtonCircle" TargetType="{x:Type Button}">
+        <Style.Setters>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Width" Value="Auto"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Border x:Name="ButtonBorder" CornerRadius="12" Background="{TemplateBinding Background}">
+                                <ContentPresenter Content="{TemplateBinding Content}" />
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style.Setters>
+    </Style>
+    <Style x:Key="BorderButtonStyle" TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="20">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource backgroundBlockColor}"/>
+        <Setter Property="BorderThickness" Value="2"/>
+    </Style>
+    <Style x:Key="ActiveBorderButtonStyle" TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="20">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="#F7AF00"/>
+        <Setter Property="BorderThickness" Value="2"/>
+    </Style>
+</ResourceDictionary>

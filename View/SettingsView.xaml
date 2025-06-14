@@ -1,0 +1,62 @@
+﻿<UserControl x:Class="Capsa_Connector.View.SettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Capsa_Connector.View"
+             xmlns:components="clr-namespace:Capsa_Connector.View.ViewComponents"
+             mc:Ignorable="d" 
+             x:Name="SettingsSite"
+             d:DesignHeight="560" d:DesignWidth="620">
+    <ScrollViewer>
+        <StackPanel Margin="30,0,30,0">
+            <TextBlock Style="{StaticResource textHeading}" Text="Nastavení" Margin="0,0,0,30"/>
+
+            <components:SectionSeparator separatorText="Obecné"/>
+            <components:SettingsRow title="Režim vývojáře" description="Zobrazuj více informací o fungování aplikace">
+                <CheckBox HorizontalAlignment="Right" IsChecked="{Binding IsDeveloper}"></CheckBox>
+            </components:SettingsRow>
+            <components:SettingsRow title="Noční režim" description="Šetři svoje oči na další den">
+                <CheckBox HorizontalAlignment="Right" IsChecked="{Binding IsDakmode, Mode=TwoWay}"></CheckBox>
+            </components:SettingsRow>
+            <components:SettingsRow title="Povolit systémová oznámení" description="Nepřeješ si být rušen, zruš moje notifikace">
+                <CheckBox HorizontalAlignment="Right" IsChecked="{Binding IsNotificationsEnabled}"></CheckBox>
+            </components:SettingsRow>
+            <components:SettingsRow title="Smazat historii" description="Smaže veškerou uloženou historii prohlížení v aplikace">
+                <Button Command="{Binding removeHistory}" HorizontalAlignment="Right" Style="{StaticResource ButtonDefault}">Smazat</Button>
+            </components:SettingsRow>
+
+
+            <components:SectionSeparator separatorText="Aktualizace"/>
+            <components:SettingsRow title="Manuální aktualizace" description="Zkontroluje jestli je vaše aplikace aktuální">
+                <Button Command="{Binding manualUpdate}" HorizontalAlignment="Right" Style="{StaticResource ButtonDefault}">Aktualizovat</Button>
+            </components:SettingsRow>
+            <components:SettingsRow title="Automatické aktualizace" description="Automaticky kontroluje nové aktualizace">
+                <CheckBox HorizontalAlignment="Right" IsChecked="{Binding IsAutoupdateEnabled}"></CheckBox>
+            </components:SettingsRow>
+
+
+            <components:DeveloperShow isDeveloperShow="{Binding IsDeveloper}">
+                <components:SectionSeparator separatorText="Párování"/>
+
+                <components:SettingsRow title="Manuální párování" description="Manuálně otevře odkaz k párování">
+                    <Button Command="{Binding openHash}" HorizontalAlignment="Right" Style="{StaticResource ButtonDefault}">Otevřít</Button>
+                </components:SettingsRow>
+                <components:SettingsRow title="Obnovit token" description="Získat nový token a hash v případě nefunkčnosti">
+                    <Button Command="{Binding getNewAppToken}" HorizontalAlignment="Right" Style="{StaticResource ButtonDefault}">Obnovit token</Button>
+                </components:SettingsRow>
+                <components:SettingsRow title="Zapnout klienta" description="Manuální zapnutí klienta na pozadí">
+                    <Button Command="{Binding StartClientTask}" HorizontalAlignment="Right" Style="{StaticResource ButtonDefault}">Start klient</Button>
+                </components:SettingsRow>
+                <components:SettingsRow title="Zabít vlákna" description="Zabije všechny aktivní vlákna">
+                    <Button Command="{Binding killThreads}" HorizontalAlignment="Right" Style="{StaticResource ButtonDefault}">Zabít vlákna</Button>
+                </components:SettingsRow>
+            </components:DeveloperShow>
+
+
+            <components:DeveloperShow isDeveloperShow="{Binding IsDeveloper}">
+                <components:SectionSeparator separatorText="Testování"/>
+            </components:DeveloperShow>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

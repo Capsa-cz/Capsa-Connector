@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="Capsa_Connector.View.ViewComponents.SettingsRow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Capsa_Connector.View.ViewComponents"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="500"
+             x:Name="settingsRow">
+    <Grid Height="50" Margin="0,0,0,20">
+        <StackPanel Grid.Column="0">
+            <TextBlock Style="{StaticResource textSecoundaryHeading}" Text="{Binding Path=title, ElementName=settingsRow}"/>
+            <Label>
+                <TextBlock TextTrimming="CharacterEllipsis" Style="{StaticResource textDescription}" Text="{Binding Path=description, ElementName=settingsRow}"/>
+            </Label>
+        </StackPanel>
+        <StackPanel Grid.Column="1" x:Name="PART_Host" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+    </Grid>
+</UserControl>

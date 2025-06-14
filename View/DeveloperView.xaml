@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="Capsa_Connector.View.DeveloperView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Capsa_Connector.View"
+             mc:Ignorable="d" 
+             xmlns:components="clr-namespace:Capsa_Connector.View.ViewComponents"
+             d:DesignHeight="500" d:DesignWidth="560">
+    <ScrollViewer Height="{Binding Path=ActualHeight, 
+                RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UIElement}, Mode=OneWay}">
+        <StackPanel Margin="30,0,30,0">
+            <TextBlock Style="{StaticResource textHeading}" Text="Developer"/>
+            <StackPanel>
+                <TextBlock Style="{StaticResource textSecoundaryHeading}" Margin="0,15,0,0">🧵Aktivní vlákna</TextBlock>
+                <components:ActiveList Margin="0,5,0,0" Elements="{Binding Path=ActiveThreads, Mode=OneWay}"/>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Style="{StaticResource textSecoundaryHeading}" Margin="0,15,0,0">🚀 Url serveru</TextBlock>
+                <Border Background="{DynamicResource backgroundBlockColor}" Padding="10" CornerRadius="7">
+                    <Grid>
+                        <TextBox Text="{Binding CapsaUrlText}" x:Name="capsaUrlField" VerticalAlignment="Center" Margin="0,0,10,0" Grid.Column="0" Foreground="{DynamicResource paragraph}" Background="{DynamicResource backgroundBlockColor}"></TextBox>
+                        <Button Command="{Binding SetCapsaUrl}" Grid.Column="1" Style="{DynamicResource ButtonCapsa}" HorizontalAlignment="Right">
+                            <TextBlock Foreground="White" Text="Set" Margin="5"></TextBlock>
+                        </Button>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                   
+                </Border>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Style="{StaticResource textSecoundaryHeading}" Margin="0,15,0,10">▶️ Testovací tlačítka</TextBlock>
+                <WrapPanel Orientation="Horizontal">
+                    <Button Command="{Binding TestNotification}" Style="{DynamicResource ButtonCapsa}" FontSize="15">
+                        <TextBlock Padding="5">Notify</TextBlock>
+                    </Button>
+                    <Button Margin="5 0 0 0" Command="{Binding TestVPN}" Style="{DynamicResource ButtonCapsa}" FontSize="15">
+                        <TextBlock Padding="5">TestVPN</TextBlock>
+                    </Button>
+                    <Button Margin="5 0 0 0" Command="{Binding TestShutdown}" Style="{DynamicResource ButtonCapsa}" FontSize="15">
+                        <TextBlock Padding="5">TestShutdown</TextBlock>
+                    </Button>
+                    <Button Margin="5 0 0 0" Command="{Binding TestShowActiveFiles}" Style="{DynamicResource ButtonCapsa}" FontSize="15">
+                        <TextBlock Padding="5">TestShowActiveFiles</TextBlock>
+                    </Button>    
+                    <Button Margin="5 0 0 0" Command="{Binding TestReport}" Style="{DynamicResource ButtonCapsa}" FontSize="15">
+                        <TextBlock Padding="5">TestReport</TextBlock>
+                    </Button>  
+                    <Button Margin="5 0 0 0" Command="{Binding TestDiskConnection}" Style="{DynamicResource ButtonCapsa}" FontSize="15">
+                        <TextBlock Padding="5">TestDiskConnect</TextBlock>
+                    </Button>  
+                    <Button Margin="5 0 0 0" Command="{Binding TestDiskDisconnection}" Style="{DynamicResource ButtonCapsa}" FontSize="15">
+                        <TextBlock Padding="5">TestDiskDisconnection</TextBlock>
+                    </Button>  
+                </WrapPanel>
+            </StackPanel>
+            <StackPanel Margin="0,20,0,0">
+                <TextBlock Style="{StaticResource textSecoundaryHeading}" Text="🎯Console"/>
+                <TextBox TextWrapping="Wrap" Padding="10" Background="Black" Foreground="White" FontSize="10" Margin="0,10,0,10" Text="{Binding ConsoleText}" ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto"></TextBox>
+                <StackPanel Grid.Row="1">
+                    <Button BorderBrush="White" BorderThickness="2" Background="White" Foreground="Black" Command="{Binding ClearConsole}">Clear</Button>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        
+    </ScrollViewer>
+</UserControl>
