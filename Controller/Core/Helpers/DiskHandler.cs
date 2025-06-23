@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
+using Capsa_Connector.Controller.Tools;
 using Capsa_Connector.Core;
 using Capsa_Connector.Core.Bases;
 using Capsa_Connector.Core.FileControlParts;
@@ -153,6 +154,9 @@ namespace Capsa_Connector.Controller.Core.Helpers
                 }
 
                 Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
+                string perzistantDiskDommand = "net use /p:yes";
+                v($"Setting persistent disk command: {perzistantDiskDommand}");
+                ExecuteCommand(perzistantDiskDommand);
                 string connectCommand =
                     $"net use {workspace.WorkspaceLetter}: \\\\sshfs\\{email}@{diskDomain}!!1999\\{sshfsAppToken}\\{workspace.WorkspaceKey} /user:{email} {password} /persistent:yes";
                 v(connectCommand);
@@ -163,6 +167,16 @@ namespace Capsa_Connector.Controller.Core.Helpers
                 {
                     LogError("Mountpoint nebyl připraven včas.");
                     return;
+                }
+
+                try
+                {
+                    CredentialManager.SaveCredential(
+                        $@"\\sshfs\{email}@{diskDomain}!!1999\{sshfsAppToken}\{workspace.WorkspaceKey}", email, password);
+                }
+                catch (Exception e)
+                {
+                    v(e.Message);
                 }
                 
                 string mountPointName =

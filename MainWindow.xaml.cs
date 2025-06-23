@@ -80,14 +80,21 @@ namespace Capsa_Connector
         }
         public void OpenExitInAppDialog()
         {
-            this.Show();
-            this.Focus();
-            if(StaticVariables.activeFiles.Count > 0)
+            try
             {
-                this.exitInAppDialog.Visibility = Visibility.Visible;
-                this.blurEffect.Radius = 10;
+                this.Show();
+                this.Focus();
+                if(StaticVariables.activeFiles.Count > 0)
+                {
+                    this.exitInAppDialog.Visibility = Visibility.Visible;
+                    this.blurEffect.Radius = 10;
+                }
+                else App.Current.Shutdown();
             }
-            else App.Current.Shutdown();
+            catch (Exception ex)
+            {
+                //Log.Error($"[MainWindow] Error while opening exit dialog: {ex.Message}");
+            }
         }
 
         private void StopTermination(object sender, RoutedEventArgs e)

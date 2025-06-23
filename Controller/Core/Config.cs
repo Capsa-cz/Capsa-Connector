@@ -20,7 +20,7 @@ namespace Capsa_Connector.Core
         public static string cancelFileOnlineEditMethod = "file/cancel";
         public static string extendFileLockMethod = "file/lock";
         public static string GetAppTokenMethod = "token";
-        public static string defaultWorkspaceLetter = "S";
+        public static string defaultWorkspaceLetter = "A";
 
         // Chunk size
         public static int chunkSize = 1024 * 1024; // (1KB)
