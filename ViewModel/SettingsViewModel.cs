@@ -25,6 +25,7 @@ namespace Capsa_Connector.ViewModel
         private bool isDakmode;
         private bool isNotificationEnabled;
         private bool isAutoupdateEnabled;
+        private bool isWorkspaceRenaming;
 
         public bool IsDeveloper
         {
@@ -88,6 +89,17 @@ namespace Capsa_Connector.ViewModel
             {
                 isAutoupdateEnabled = value;
                 Settings1.Default.autoUpdate = value;
+                Settings1.Default.Save();
+            }
+        }
+        
+        public bool IsWorkspaceRenaming
+        {
+            get { return isWorkspaceRenaming; }
+            set
+            {
+                isWorkspaceRenaming = value;
+                Settings1.Default.DiskRenaming = value;
                 Settings1.Default.Save();
             }
         }

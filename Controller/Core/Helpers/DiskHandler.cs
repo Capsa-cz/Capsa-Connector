@@ -115,6 +115,8 @@ namespace Capsa_Connector.Controller.Core.Helpers
         {
             try
             {
+                //Get from settings if workspace (disk) renaming is enabled
+                bool workspaceRenaming = Settings1.Default.DiskRenaming;
                 string password = "";
                 SetEmail(null);
                 if (email == null)
@@ -181,8 +183,12 @@ namespace Capsa_Connector.Controller.Core.Helpers
                 
                 string mountPointName =
                     $"##sshfs#{email}@{diskDomain}!!1999#{sshfsAppToken}#{workspace.WorkspaceKey}".Replace("\\", "");
+
+                if (workspaceRenaming)
+                {
+                    SetMountPointLabel(mountPointName, workspace.Title);
+                }
                 
-                SetMountPointLabel(mountPointName, workspace.Title);
                 Mouse.OverrideCursor = null;
                 updateGuiRelayCommand?.Execute(null);
                 
@@ -202,10 +208,15 @@ namespace Capsa_Connector.Controller.Core.Helpers
                 }
                 
                 await Task.Delay(5000);
-                SetMountPointLabel(mountPointName, workspace.Title);
-                
+                if (workspaceRenaming)
+                {
+                    SetMountPointLabel(mountPointName, workspace.Title);
+                }                
                 await Task.Delay(60000);
-                SetMountPointLabel(mountPointName, workspace.Title);
+                if (workspaceRenaming)
+                {
+                    SetMountPointLabel(mountPointName, workspace.Title);
+                }            
             }
             catch (MissingValuesForDiskConnection ex)
             {
@@ -342,7 +353,7 @@ namespace Capsa_Connector.Controller.Core.Helpers
                     RedirectStandardOutput = true,
                     RedirectStandardError = true,
                     UseShellExecute = false,
-                    CreateNoWindow = false
+                    CreateNoWindow = true
                 };
 
                 using Process process = new Process { StartInfo = psi };

@@ -56,6 +56,9 @@
 
             <components:DeveloperShow isDeveloperShow="{Binding IsDeveloper}">
                 <components:SectionSeparator separatorText="Testování"/>
+                <components:SettingsRow title="Přejmenovávání workspace" description="Přejmenuje workspace do správného formátu">
+                    <CheckBox HorizontalAlignment="Right" IsChecked="{Binding IsWorkspaceRenaming}"></CheckBox>
+                </components:SettingsRow>
             </components:DeveloperShow>
         </StackPanel>
     </ScrollViewer>

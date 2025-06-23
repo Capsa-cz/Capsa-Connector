@@ -177,5 +177,17 @@ namespace Capsa_Connector {
                 this["UpdateSettings"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool DiskRenaming {
+            get {
+                return ((bool)(this["DiskRenaming"]));
+            }
+            set {
+                this["DiskRenaming"] = value;
+            }
+        }
     }
 }
