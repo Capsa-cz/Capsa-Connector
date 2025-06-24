@@ -4,6 +4,8 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -79,7 +81,9 @@ namespace Capsa_Connector.Controller.Core.Helpers
         {
             try
             {
-                string command = $"cmd /V:OFF /C \"net use | findstr /C:\"\\\\sshfs\\{email}@{diskDomain}!!1999\\{sshfsAppToken}\\{workspaceKey}\"\"";
+                Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+
+                string command = "net use";
                 ProcessStartInfo psi = new ProcessStartInfo
                 {
                     FileName = "cmd.exe",
@@ -87,16 +91,32 @@ namespace Capsa_Connector.Controller.Core.Helpers
                     RedirectStandardOutput = true,
                     RedirectStandardError = true,
                     UseShellExecute = false,
-                    CreateNoWindow = true
+                    CreateNoWindow = true,
+                    StandardOutputEncoding = Encoding.GetEncoding(850)
                 };
 
                 using Process process = new Process { StartInfo = psi };
                 process.Start();
                 string output = process.StandardOutput.ReadToEnd();
-
                 process.WaitForExit();
 
-                return !string.IsNullOrWhiteSpace(output);
+                string[] lines = output.Split('\n')
+                    .Select(line => line.Trim())
+                    .Where(line => line.Contains(@"\\sshfs\"))
+                    .ToArray();
+
+                string pattern = $@"\\\\sshfs\\{Regex.Escape(email)}@{Regex.Escape(diskDomain)}!!1999\\[^\\]+\\{Regex.Escape(workspaceKey)}";
+                v("Pattern: " + pattern);
+                v("Output" + output);
+
+                foreach (string line in lines)
+                {
+                    Console.WriteLine($"LINE: {line}");
+                    if (Regex.IsMatch(line, pattern, RegexOptions.IgnoreCase))
+                        return true;
+                }
+
+                return false;
             }
             catch (Exception e)
             {
@@ -104,6 +124,9 @@ namespace Capsa_Connector.Controller.Core.Helpers
                 return false;
             }
         }
+
+
+
 
         /// <summary>
         /// This method will connect the disk to the system. It will connect to disk letter using net use command and other important parameters for connecting to network drive.
