@@ -1,7 +1,11 @@
-﻿using System.IO;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows;
+using Capsa_Connector.Controller.Core.Helpers;
 using Capsa_Connector.Core;
+using static Capsa_Connector.Core.Tools.Log;
 
 namespace Capsa_Connector.View
 {
@@ -22,6 +26,7 @@ namespace Capsa_Connector.View
             WorkspaceNameBlock.Text = worspaceName;
             PopulateDiskLetters();
             ButtonClicked = false;
+            PasswordBox.Focus();
         }
 
         private void PopulateDiskLetters()
@@ -34,6 +39,11 @@ namespace Capsa_Connector.View
             connectedDrives = connectedDrives.Select(d => d.TrimEnd(':'));
             
             var availableDrives = allDrives.Except(connectedDrives);
+            
+            List<String> drives = NetworkDriveHelper.GetMappedDriveLetters();
+            { 
+                availableDrives = availableDrives.Except(drives);
+            }
             DiskLetterComboBox.ItemsSource = availableDrives;
             
             // First default selection will be S if available, otherwise first available drive
@@ -43,8 +53,6 @@ namespace Capsa_Connector.View
                 DiskLetterComboBox.SelectedItem = availableDrives.First();
             else
                 DiskLetterComboBox.SelectedItem = null;
-
-
         }
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
