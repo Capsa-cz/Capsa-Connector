@@ -139,6 +139,8 @@ namespace Capsa_Connector
             contextMenu.Items.Add("Ukončit", null, Exit_Click);
             _notifyIcon.ContextMenuStrip = contextMenu;
             _notifyIcon.MouseClick += NotifyIcon_MouseClick;
+            
+            DiskHandler.ReconnectUnavailableDisks();
 
             //var app = (App)Application.Current;
             //app.ChangeTheme(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Themes/UIColors-Dark.xaml"));

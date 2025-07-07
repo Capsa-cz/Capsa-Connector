@@ -111,7 +111,7 @@ namespace Capsa_Connector.Controller.Core.Helpers
 
                 foreach (string line in lines)
                 {
-                    Console.WriteLine($"LINE: {line}");
+                    v($"LINE: {line}");
                     if (Regex.IsMatch(line, pattern, RegexOptions.IgnoreCase))
                         return true;
                 }
@@ -365,7 +365,7 @@ namespace Capsa_Connector.Controller.Core.Helpers
         /// </summary>
         /// <param name="command"></param>
         /// <exception cref="Exception"></exception>
-        private void ExecuteCommand(string command)
+        private static void ExecuteCommand(string command)
         {
             try
             {
@@ -516,9 +516,55 @@ namespace Capsa_Connector.Controller.Core.Helpers
             }
         }
 
-        private void LogError(string message)
+        private static void LogError(string message)
         {
             v(message);
+        }
+        public static void ReconnectUnavailableDisks()   
+        {
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+
+            string command = "net use";
+            ProcessStartInfo psi = new ProcessStartInfo
+            {
+                FileName = "cmd.exe",
+                Arguments = $"/C {command}",
+                RedirectStandardOutput = true,
+                RedirectStandardError = true,
+                UseShellExecute = false,
+                CreateNoWindow = true,
+                StandardOutputEncoding = Encoding.GetEncoding(850)
+            };
+
+            try
+            {
+                using Process process = new Process { StartInfo = psi };
+                process.Start();
+                string output = process.StandardOutput.ReadToEnd();
+                process.WaitForExit();
+
+                string[] lines = output.Split('\n')
+                    .Select(line => line.Trim())
+                    .Where(line => line.Contains(@"\\sshfs\"))
+                    .ToArray();
+            
+                foreach (string line in lines)
+                {   
+                    var match = Regex.Match(line, @"^(Nedostupn[éy]?|OK)\s+(?<local>[A-Z]:)\s+(?<remote>\\\\sshfs\\[^\s]+)");
+                    if (match.Success)
+                    {
+                        string character = match.Groups["local"].Value;
+                        string remote = match.Groups["remote"].Value;
+                        string connectCommand = $"net use {character} {remote}";
+                        ExecuteCommand(connectCommand);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                v($"Error in ReconectUnavailableDisks: {e.Message}");
+            }
+            
         }
     }
 
