@@ -238,15 +238,17 @@ namespace Capsa_Connector
         private ShutdownMode _shutdownMode = ShutdownMode.OnExplicitShutdown;
         protected override void OnExit(ExitEventArgs e)
         {
-            // Stop all connections
-            MainWindow.OpenExitInAppDialog();
             
-            EndConnections.EndAllFileConnections();
-            EndConnections.EndAllThreads();
             
-            // Remove icon in system tray
             try
             {
+                // Stop all connections
+                MainWindow.OpenExitInAppDialog();
+            
+                EndConnections.EndAllFileConnections();
+                EndConnections.EndAllThreads();
+                
+                // Remove icon in system tray
                 _notifyIcon.Dispose();
 
                 // Release mutex
